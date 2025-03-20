@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request, session
 from models.retriever import retrieve_answer
 from models.generator import generate_answer
@@ -38,4 +39,5 @@ def chat():
     return bot_reply
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.getenv("PORT", 8080))
+    app.run(host="0.0.0.0", port=port, debug=False)
